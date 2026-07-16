@@ -29,14 +29,3 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealElements.forEach((element) => revealObserver.observe(element));
-
-const contactForm = document.querySelector('.contact-form');
-const formStatus = document.querySelector('.form-status');
-
-if (contactForm && formStatus) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    formStatus.textContent = 'Thank you — your message has been received on the front end.';
-    contactForm.reset();
-  });
-}

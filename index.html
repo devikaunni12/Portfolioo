@@ -107,7 +107,7 @@
               <span class="timeline-date">July 2025 – 2026</span>
               <div class="timeline-card">
                 <h3>Python Developer Intern</h3>
-                <p class="timeline-company">SMEC Labs, Kochi</p>
+                <p class="timeline-company">SMEC Technologies, Kochi</p>
                 <p>
                   Full-stack development internship covering Python, Django, MySQL, MongoDB, HTML, CSS, Figma,
                   deployment with AWS (S3, RDS), Nginx, Gunicorn, authentication features including OTP, email validation,
@@ -206,6 +206,8 @@
                 <li>OTP verification for registration</li>
                 <li>Deployed on AWS EC2 with Nginx, Gunicorn, RDS, and S3</li>
               </ul>
+              <br>
+              <br>
               <div class="project-actions">
                 <a href="https://github.com/devikaunni12/EasyPick_ecommerce-system" class="button button-outline">Source Code</a>
                 <a href="https://easyypick.devikaunni.online/" class="button button-primary">Live Demo</a>
@@ -227,6 +229,8 @@
                 <li>Appointment and availability management</li>
                 <li>System-wide administration experience</li>
               </ul>
+              <br>
+              <br>
               <div class="project-actions">
                 <a href="https://github.com/devikaunni12/Mediguard" class="button button-outline">Source Code</a>
                
@@ -247,7 +251,10 @@
                 <li>Efficient student record management</li>
                 <li>Easy-to-navigate data operations</li>
                 <li>Clean UI for day-to-day admin usage</li>
+                <li>Ensured database integrity and secure data storage</li>
+                <li>Added quick search and filtering for profiles</li>
               </ul>
+              <br>
               <div class="project-actions">
                 <a href="https://github.com/devikaunni12/Student_Management_System_Test" class="button button-outline">Source Code</a>
                 <a href="https://student-management-system-test-ccj8.vercel.app/" class="button button-primary">Live Demo</a>
@@ -372,5 +379,49 @@
     </div>
 
     <script src="script.js"></script>
+
+   <!-- EmailJS CDN -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  (function() {
+    // Replace with your actual Public Key from the Account tab
+    emailjs.init({
+      publicKey: "-MyYBPY6e2AO_O8JJ", 
+    });
+  })();
+</script>
+
+<!-- Wrap your form logic inside a script tag like this: -->
+    <script type="text/javascript">
+      const contactForm = document.querySelector('.contact-form');
+      const formStatus = document.querySelector('.form-status');
+
+      contactForm.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevents page reload
+
+          // Update the status message to show it is sending
+          formStatus.textContent = "Sending your message...";
+          formStatus.style.color = "inherit"; 
+
+          // ⚠️ MAKE SURE TO REPLACE THESE WITH YOUR ACTUAL IDS FROM EMAILJS!
+          const serviceID = 'service_rwverqn'; 
+          const templateID = 'template_kmfax9b'; 
+
+          emailjs.sendForm(serviceID, templateID, this)
+              .then(() => {
+                  // Success: update status text, color, and clear the form
+                  formStatus.textContent = "Message sent successfully! 🚀";
+                  formStatus.style.color = "green";
+                  contactForm.reset(); 
+              }, (error) => {
+                  // Error: update status text and color
+                  formStatus.textContent = "Failed to send message. Please try again. ❌";
+                  formStatus.style.color = "red";
+                  console.error('EmailJS Error:', error);
+              });
+      });
+    </script>
+
   </body>
 </html>
